@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.poditivity.chat.ChatFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_chatListFragment"
+            app:destination="@id/chatListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.poditivity.chat.ChatListFragment"
+        android:label="fragment_chat_list"
+        tools:layout="@layout/fragment_chat_list" >
+        <argument
+            android:name="chatUser"
+            app:argType="com.poditivity.chat.ChatUser" />
+        <action
+            android:id="@+id/action_chatListFragment_to_usersFragment"
+            app:destination="@id/usersFragment" />
+        <action
+            android:id="@+id/action_chatListFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.poditivity.chat.ChatFragment"
+        android:label="ChatFragment" >
+        <argument
+            android:name="channelId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="com.poditivity.chat.UsersFragment"
+        android:label="UsersFragment" >
+        <action
+            android:id="@+id/action_usersFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+</navigation>

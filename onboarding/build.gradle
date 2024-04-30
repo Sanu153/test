@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id("androidx.navigation.safeargs.kotlin")
+}
+
+android {
+    namespace 'com.poditivity.onboarding'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        buildConfigField "String", "BASE_URL" , getBaseURL()
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'com.github.appsfeature:otp-view:1.0'
+
+    // Navigation Component
+    implementation libs.androidx.navigation.fragment.ktx
+
+    implementation libs.androidx.navigation.ui.ktx
+
+    implementation libs.hilt.android
+    kapt libs.hilt.compiler
+
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    implementation libs.androidx.lifecycle.livedata.ktx
+
+
+    implementation libs.retrofit.core
+    implementation libs.gson.converter
+    implementation libs.okhttp
+    implementation libs.logging.interceptor
+
+
+    def coroutines_version = "1.6.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation 'com.airbnb.android:lottie:6.3.0'
+
+
+    implementation project(':common')
+    implementation project(':social')
+}
+
+ext.buildConfigs = [
+        baseUrl: getBaseURL(),
+]
+
+String getBaseURL(){
+    return BASE_URL
+}
+

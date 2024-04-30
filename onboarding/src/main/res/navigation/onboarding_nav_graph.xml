@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_nav_graph"
+    app:startDestination="@id/infoFragment">
+
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.poditivity.onboarding.screens.OtpFragment"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otpFragment_to_collegeDetailsFragment"
+            app:destination="@id/collegeDetailsFragment" />
+        <action
+            android:id="@+id/action_otpFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/otpFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.poditivity.onboarding.screens.SignupFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
+        <action
+            android:id="@+id/action_signupFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/signupFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/memberSelectorFragment"
+        android:name="com.poditivity.onboarding.screens.MemberSelectorFragment"
+        android:label="fragment_member_selector"
+        tools:layout="@layout/fragment_member_selector" >
+        <action
+            android:id="@+id/action_memberSelectorFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_memberSelectorFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/memberSelectorFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/collegeDetailsFragment"
+        android:name="com.poditivity.onboarding.screens.CollegeDetailsFragment"
+        android:label="fragment_college_details"
+        tools:layout="@layout/fragment_college_details" >
+        <action
+            android:id="@+id/action_collegeDetailsFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/collegeDetailsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.poditivity.onboarding.screens.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgetUsernameFragment"
+            app:destination="@id/forgetUsernameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.poditivity.onboarding.screens.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_infoFragment_to_memberSelectorFragment"
+            app:destination="@id/memberSelectorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetUsernameFragment"
+        android:name="com.poditivity.onboarding.screens.ForgetUsernameFragment"
+        android:label="fragment_forget_username"
+        tools:layout="@layout/fragment_forget_username" />
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.poditivity.onboarding.screens.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_newPasswordFragment"
+            app:destination="@id/newPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPasswordFragment"
+        android:name="com.poditivity.onboarding.screens.NewPasswordFragment"
+        android:label="fragment_new_password"
+        tools:layout="@layout/fragment_new_password" >
+        <action
+            android:id="@+id/action_newPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/newPasswordFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>
